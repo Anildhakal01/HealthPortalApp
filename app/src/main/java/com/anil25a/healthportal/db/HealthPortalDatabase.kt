@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.anil25a.healthportal.dao.HospitalDAO
-import com.anil25a.healthportal.dao.UserDAO
+import com.anil25a.healthportal.dao.PatientDAO
 import com.anil25a.healthportal.entity.Hospital
 import com.anil25a.healthportal.entity.Patient
 
@@ -13,15 +13,15 @@ import com.anil25a.healthportal.entity.Patient
     entities = [(Patient::class),(Hospital::class)],
     version = 1
 )
-abstract class database: RoomDatabase() {
-    abstract fun getUserDAO(): UserDAO
+abstract class HealthPortalDatabase: RoomDatabase() {
+    abstract fun getUserDAO(): PatientDAO
     abstract fun getHospitalDAO(): HospitalDAO
     companion object {
         @Volatile
-        private var instance: database? = null
-        fun getInstance(context: Context): database {
+        private var instance: HealthPortalDatabase? = null
+        fun getInstance(context: Context): HealthPortalDatabase {
             if (instance == null) {
-                synchronized(database::class) {
+                synchronized(HealthPortalDatabase::class) {
                     instance=buildDatabase(context)
                 }
             }
@@ -31,7 +31,7 @@ abstract class database: RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                database::class.java,
+                HealthPortalDatabase::class.java,
                 "HealthPortalDB"
             ).build()
 

@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="25dp"
+        android:textColor="@color/purple_700"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_horizontal"
+        android:text="ALL HOSPITALS"
         android:layout_alignParentTop="true"        />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -32,7 +38,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Home"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:backgroundTint="#D6D1D1"
             android:layout_weight="1"
             />
@@ -40,32 +46,22 @@
             android:id="@+id/ibtnHospital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hospital"
+            android:text="Hospitals"
             android:textColor="@color/black"
             android:backgroundTint="#D6D1D1"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:layout_toRightOf="@+id/ibtnHome"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/ibtnDoctor"
+            android:id="@+id/ibtnAppointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Doctor"
+            android:text="Appointments"
             android:textColor="@color/black"
             android:backgroundTint="#D6D1D1"
             android:layout_weight="1"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:layout_toRightOf="@+id/ibtnHospital"/>
-        <Button
-            android:id="@+id/ibtnUserAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LogOut"
-            android:backgroundTint="#D6D1D1"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:layout_weight="1"
-            android:layout_toRightOf="@+id/ibtnDoctor"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -5,12 +5,12 @@ import androidx.room.Query
 import com.anil25a.healthportal.entity.Patient
 
 @Dao
-interface UserDAO {
+interface PatientDAO {
     //insert function
     @Insert
-     fun registerUser(user: Patient)
+     fun registerPatient(patient: Patient)
     @Query("select * from Patient where email=(:email) and password=(:password)")
-     fun checkUser(email:String,password:String):Patient
+     fun checkPatient(email:String,password:String):Patient
 
 
 }

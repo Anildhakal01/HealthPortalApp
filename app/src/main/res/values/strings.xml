@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">HealthPortal</string>
+    <string name="app_name">HEALTH PORTAL</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="userTypes">
+        <item>Admin</item>
+        <item>Hospital</item>
+        <item>Patient</item>
+    </string-array>
 </resources>

@@ -11,8 +11,11 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.widget.*
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import com.anil25a.healthportal.R
 import com.anil25a.healthportal.repository.HospitalRepository
+import com.anil25a.healthportal.ui.admin.HospitalAdminActivity
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,13 +60,95 @@ class HospitalRegistrationActivity : AppCompatActivity() {
         etConfirm = findViewById(R.id.etConfirm)
         ivClick=findViewById(R.id.ivClick)
         checkRunTimePermission()
+        if(intent.getStringExtra("name")!=null){
+            etPassword.isVisible=false
+            etConfirm.isVisible=false
+            etHname.setText(intent.getStringExtra("name"))
+            etLocation.setText(intent.getStringExtra("location"))
+            etDesc.setText(intent.getStringExtra("desc"))
+            etEmail.setText(intent.getStringExtra("email"))
+            etPassword.setText(intent.getStringExtra("password"))
+            val imagepath=intent.getStringExtra("imagepath")
+            Glide.with(this@HospitalRegistrationActivity)
+                .load(imagepath)
+                .fitCenter()
+                .into(ivClick)
+            btnRegister.setText("Update")
+//            btnAdd.setTextColor(Color.WHITE)
+        }
         btnRegister.setOnClickListener {
-            addHospital()
+            if(btnRegister.text=="Register"){
+                addHospital()
+            }
+            else {
+                updateHospital()
+            }
         }
         ivClick.setOnClickListener{
             loadPopUpMenu()
         }
     }
+
+    private fun updateHospital() {
+        if (imageUrl != null) {
+            val file = File(imageUrl!!)
+            val reqFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            val hospitalId= intent.getStringExtra("_id")
+            var hname = etHname.text.toString()
+            var desc = etDesc.text.toString()
+            var location = etLocation.text.toString()
+            var email = etEmail.text.toString()
+                val rHname: RequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), hname)
+                val rDesc: RequestBody =RequestBody.create(MediaType.parse("text/plain"), desc)
+
+                val rLocation: RequestBody =RequestBody.create(MediaType.parse("text/plain"), location)
+                val rEmail: RequestBody =RequestBody.create(MediaType.parse("text/plain"), email)
+                CoroutineScope(Dispatchers.IO).launch {
+                val repository = HospitalRepository()
+                val response = repository.updateHospital(
+                    id = hospitalId!!,
+                    hname = rHname,
+                    desc = rDesc,
+                    location = rLocation,
+                    imgbody = MultipartBody.Part.createFormData("himage", file.name, reqFile),
+                    email = rEmail,
+
+                )
+                if (response.success == true) {
+                    withContext(Dispatchers.Main) {
+
+                        val intent=
+                            Intent(
+                                this@HospitalRegistrationActivity,
+                                HospitalAdminActivity::class.java
+                            )
+                        finish()
+
+                        startActivity(intent)
+                        Toast.makeText(
+                            this@HospitalRegistrationActivity,
+                            "Successfully Updated",
+                            Toast.LENGTH_LONG
+                        )
+                            .show()
+
+                    }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@HospitalRegistrationActivity,
+                            "Update Error",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+
+        }
+    }
+
     private fun checkRunTimePermission() {
         if (!hasPermission()) {
             requestPermission()
@@ -202,7 +287,7 @@ class HospitalRegistrationActivity : AppCompatActivity() {
                             Toast.makeText(
                                 this@HospitalRegistrationActivity,
                                 "Success",
-                                Toast.LENGTH_SHORT
+                                Toast.LENGTH_LONG
                             )
                                 .show()
                             finish()

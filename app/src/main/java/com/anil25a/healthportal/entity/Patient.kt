@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Patient(
+    @PrimaryKey
+    var _id:String="",
     var fname:String?=null,
     var lname:String?=null,
     var age:Int?=null,
@@ -12,7 +14,4 @@ data class Patient(
     var address:String?=null,
     var email:String?=null,
     var password:String?=null
-) {
-    @PrimaryKey(autoGenerate = true)
-    var userId:Int=0
-}
+)

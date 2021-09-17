@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anil25a.healthportal" >
+    package="com.anil25a.healthportal">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,8 +17,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthPortal"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.PatientAppointmentActivity"
+            android:exported="true" >
 
+        </activity>
+        <activity
+            android:name=".ui.VerifyAppointmentActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ui.AppointmentRequestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.admin.AdminDashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.admin.PatientAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.admin.HospitalAdminActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.DashboardActivity"
             android:exported="true" />
@@ -30,7 +53,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

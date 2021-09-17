@@ -7,21 +7,30 @@
     android:orientation="vertical"
     android:id="@+id/constlayout"
     tools:context=".ui.LoginActivity">
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
+
         android:backgroundTintMode="src_over"
-        android:text="HealthPortal"
+        android:text="Login Screen"
+        android:layout_margin="60dp"
+        android:padding="10dp"
+        android:background="#91E8DF"
+        android:gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
-        android:textSize="36sp" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        ></Space>
+        android:textSize="35sp" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_margin="19dp"
+        android:textSize="20sp"
+
+        />
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
@@ -51,8 +60,8 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="20dp"
+        android:layout_height="42dp"
+        android:layout_margin="22dp"
         android:backgroundTint="@color/purple_700"
         android:fontFamily="sans-serif-condensed"
         android:text="Login"
@@ -70,31 +79,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Don't Have Account?"
-            android:layout_margin="10dp"
-            android:textColor="#0000FF"
+            android:layout_margin="15dp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:gravity="right"
             android:textSize="16sp"
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/tvlSignupHospital"
+            android:id="@+id/tvlSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="HospitalSignUp"
+            android:layout_margin="15dp"
+            android:gravity="left"
+            android:text="SignUp"
             android:textColor="#0000FF"
-            android:textSize="16sp"
-            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_weight="2"
             />
-        <TextView
-            android:id="@+id/tvlSignupPatient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="PatientSignup"
-            android:textColor="#0000FF"
-            android:textSize="16sp"
-            android:layout_weight="1"
-            />
+
 
     </LinearLayout>
 

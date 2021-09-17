@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7E2EC"
-    tools:context=".ui.admin.DashboardActivity">
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:text="DASHBOARD"
+        android:text="ADMIN DASHBOARD"
         android:textStyle="bold"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,15 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnProperties"
+        android:id="@+id/btnHospital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="264dp"
         android:padding="10dp"
-        android:text="View Properties"
-        android:fontFamily="cursive"
-        android:textStyle="italic"
-        android:textSize="30sp"
+        android:text="Hospitals"
+        android:textSize="25sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -35,18 +33,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnUsers"
+        android:id="@+id/btnPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:padding="10dp"
-        android:text="View Users"
-        android:fontFamily="cursive"
-        android:textStyle="italic"
-        android:textSize="30sp"
+        android:text="Patients"
+
+        android:textSize="25sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProperties" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHospital" />
 </androidx.constraintlayout.widget.ConstraintLayout>

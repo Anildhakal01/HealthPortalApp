@@ -1,8 +1,5 @@
 package com.anil25a.healthportal.api
-import com.anil25a.healthportal.response.AddHospitalResponse
-import com.anil25a.healthportal.response.DeleteHospitalResponse
-import com.anil25a.healthportal.response.HospitalLoginResponse
-import com.anil25a.healthportal.response.UpdateHospitalResponse
+import com.anil25a.healthportal.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -31,31 +28,43 @@ interface HospitalAPI {
     suspend fun getAllHospital(
     ):Response<AddHospitalResponse>
 
-    @GET("hospital/{email}")
-    suspend fun viewPropertyById(
-        @Path("email") email: String
-    ): Response<AddHospitalResponse>
-    @DELETE("property/{id}")
+
+    @GET("hospital/nearby")
+    suspend fun getNearbyHospital(
+    ):Response<AddHospitalResponse>
+
+    @GET("viewAppointments/{id}")
+    suspend fun viewAppointment(
+        @Path("id") id: String
+    ): Response<ViewAppointmentResponse>
+    @DELETE("hospital/delete/{id}")
     suspend fun deleteHospital(
         @Path("id") id: String
-    ): Response<DeleteHospitalResponse>
+    ): Response<HospitalLoginResponse>
 
     @Multipart
-    @PUT("/updateHospital/{id}")
+    @PUT("/hospital/update/{id}")
     suspend fun updateHospital(
         @Path("id")id:String,
-        @Part("property_name")property_name: RequestBody,
-        @Part("price")price:RequestBody,
-        @Part("property_status")property_status:RequestBody,
-        @Part("property_type")property_type:RequestBody,
-        @Part("address")address:RequestBody,
-        @Part("Distance_between_road")Distance_between_road :RequestBody,
-        @Part("property_area")property_area:RequestBody,
-        @Part("description")description:RequestBody,
+        @Part("name")hname:RequestBody,
+        @Part("desc")desc:RequestBody,
+        @Part("location")location:RequestBody,
         @Part file: MultipartBody.Part,
         @Part("email")email:RequestBody,
-
         ): Response<UpdateHospitalResponse>
 
+    @FormUrlEncoded
+    @PUT("/hospital/verifyAppointment")
+    suspend fun verifyAppointment(
+        @Field("patientId")patientId:String,
+        @Field("hospitalId")hospitalId:String,
+    ): Response<UpdateHospitalResponse>
+
+    @FormUrlEncoded
+    @PUT("/hospital/rejectAppointment")
+    suspend fun rejectAppointment(
+        @Field("patientId")patientId:String,
+        @Field("hospitalId")hospitalId:String,
+    ): Response<UpdateHospitalResponse>
 
 }

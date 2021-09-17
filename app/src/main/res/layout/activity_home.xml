@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HomeActivity">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:text="Welcome"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"        />
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tvWelcome"
+        android:background="@color/purple_700">
+        <TextView
+            android:id="@+id/tvHospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="Top Hospitals"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_below="@+id/space"
+            />
+
+        <TextView
+            android:id="@+id/tvlHospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/space"
+            android:gravity="end"
+            android:layout_margin="5dp"
+            android:background="@color/purple_700"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:text="VIEW ALL"
+
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hospitalview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearlayout1"
+        android:background="#E1DDEC"
+
+        />
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/hospitalview"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/purple_700"
+        android:layout_below="@+id/hospitalview">
+        <TextView
+            android:id="@+id/tvDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Nearby Hospitals"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/purple_700"
+            android:textColor="@color/white"
+            android:layout_below="@+id/space"
+            />
+
+        <TextView
+            android:id="@+id/tvlNearby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/space"
+            android:gravity="end"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:text="VIEW ALL"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doctorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/linearlayout2"
+        android:background="#E1DDEC"
+
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+        <Button
+            android:id="@+id/ibtnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Home"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:backgroundTint="#D6D1D1"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/ibtnHospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hospitals"
+            android:textColor="@color/black"
+            android:backgroundTint="#D6D1D1"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/ibtnHome"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/ibtnAppointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Appointments"
+            android:textColor="@color/black"
+            android:backgroundTint="#D6D1D1"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/ibtnHospital"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+</ScrollView>
