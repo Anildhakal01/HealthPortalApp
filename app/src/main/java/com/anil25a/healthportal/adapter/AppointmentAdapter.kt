@@ -66,7 +66,7 @@ class AppointmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         override fun onBindViewHolder(holder: AppointmentViewHolder, position: Int) {
         val appointment = lstAppointment[position]
-//                val patientId= appointment.patientId?._id.toString()
+                val patientId= appointment.patientId?._id.toString()
                 val requestStatus=appointment.requestStatus
                 if(requestStatus=="Accepted"){
                         holder.btnAccept.text="Accepted"
@@ -79,14 +79,14 @@ class AppointmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 }
                 holder.tvIssue.text = appointment.issue.toString()
         holder.tvAppointmentTime.text=appointment.dateTime.toString()
-//        holder.tvName.text = appointment.patientId?.fname.toString()
+        holder.tvName.text = appointment.patientId?.fname.toString()
                 holder.tvDoctor.text = appointment.doctorName.toString()
-//                holder.tvAge.text = appointment.patientId?.age.toString()
-//                holder.tvGender.text = appointment.patientId?.gender.toString()
+                holder.tvAge.text = appointment.patientId?.age.toString()
+                holder.tvGender.text = appointment.patientId?.gender.toString()
         holder.btnAccept.setOnClickListener {
                 CoroutineScope(Dispatchers.IO).launch {
                         val repository = HospitalRepository()
-                        val response = repository.verifyAppointment(patientId="patientId",
+                        val response = repository.verifyAppointment(patientId=patientId,
                         hospitalId=hospitalId)
                         if (response.success == true) {
                                 withContext(Dispatchers.Main) {
@@ -115,7 +115,7 @@ class AppointmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 holder.btnReject.setOnClickListener {
                         CoroutineScope(Dispatchers.IO).launch {
                                 val repository = HospitalRepository()
-                                val response = repository.rejectAppointment(patientId="patientId",
+                                val response = repository.rejectAppointment(patientId=patientId,
                                         hospitalId=hospitalId)
                                 if (response.success == true) {
                                         withContext(Dispatchers.Main) {

@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Appointment(
     @PrimaryKey
     var _id: String ="",
-    var patientId:String?=null,
-    var hospitalId:Hospital?=null,
+    var patientId:Patient?=null,
+    var hospitalId:String?=null,
     var issue: String? = null,
     var doctorName: String? = null,
     var dateTime:String?=null,
